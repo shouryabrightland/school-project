@@ -1,0 +1,113 @@
+[
+    {
+        "name": "Interstellar",
+        "genre": "Sci-Fi",
+        "description": "A team of astronauts travel through a wormhole to find a new home for humanity."
+    },
+    {
+        "name": "Inception",
+        "genre": "Sci-Fi",
+        "description": "A thief enters dreams to steal secrets and faces a final impossible mission."
+    },
+
+    {
+        "name": "The Dark Knight",
+        "genre": "Action",
+        "description": "Batman faces the Joker, a criminal mastermind who brings chaos to Gotham City."
+    },
+    {
+        "name": "John Wick",
+        "genre": "Action",
+        "description": "A retired assassin seeks revenge after losing everything important to him."
+    },
+
+    {
+        "name": "The Shawshank Redemption",
+        "genre": "Drama",
+        "description": "Two imprisoned men build friendship while surviving in harsh prison conditions."
+    },
+    {
+        "name": "Forrest Gump",
+        "genre": "Drama",
+        "description": "The life journey of a simple man who unknowingly influences major historical events."
+    },
+
+    {
+        "name": "The Conjuring",
+        "genre": "Horror",
+        "description": "Paranormal investigators help a family experiencing terrifying supernatural events."
+    },
+    {
+        "name": "Insidious",
+        "genre": "Horror",
+        "description": "A family tries to save their son trapped in a dark spiritual dimension."
+    },
+
+    {
+        "name": "Toy Story",
+        "genre": "Animation",
+        "description": "Toys come alive and go through adventures when humans are not around."
+    },
+    {
+        "name": "Frozen",
+        "genre": "Animation",
+        "description": "Two sisters struggle with magical ice powers that threaten their kingdom."
+    },
+
+    {
+        "name": "The Hangover",
+        "genre": "Comedy",
+        "description": "A bachelor party in Las Vegas goes wildly wrong after a night of chaos."
+    },
+    {
+        "name": "3 Idiots",
+        "genre": "Comedy",
+        "description": "Three engineering students challenge traditional education systems with humor and friendship."
+    },
+
+    {
+        "name": "Shutter Island",
+        "genre": "Thriller",
+        "description": "A U.S. marshal investigates a mysterious disappearance in a psychiatric facility."
+    },
+    {
+        "name": "Gone Girl",
+        "genre": "Thriller",
+        "description": "A man becomes the prime suspect after his wife mysteriously disappears."
+    },
+
+    {
+        "name": "Titanic",
+        "genre": "Romance",
+        "description": "A love story unfolds aboard the ill-fated Titanic ship."
+    },
+    {
+        "name": "The Notebook",
+        "genre": "Romance",
+        "description": "A timeless love story between two people from different social backgrounds."
+    },
+
+    {
+        "name": "The Da Vinci Code",
+        "genre": "Mystery",
+        "description": "A symbologist uncovers a secret hidden in famous artworks and religious history."
+    },
+    {
+        "name": "Sherlock Holmes",
+        "genre": "Mystery",
+        "description": "A brilliant detective solves complex crimes using logic and observation."
+    },
+
+    {
+        "name": "The Lord of the Rings",
+        "genre": "Adventure",
+        "description": "A hobbit embarks on a journey to destroy a powerful ring."
+    },
+    {
+        "name": "Pirates of the Caribbean",
+        "genre": "Adventure",
+        "description": "A pirate captain searches for treasure while facing curses and enemies."
+    }
+]
+
+

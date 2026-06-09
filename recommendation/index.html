@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Study Notes</title>
+</head>
+<style>
+    .container, section {
+    
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.section {
+    margin-bottom: 30px;
+    padding: 15px;
+    border-left: 4px solid #333;
+    background: #f7f7f7;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.text {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.img-box {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+.img-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+note-copy {
+    display: block;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 15px;
+    border-left: 4px solid #333;
+    background: #f7f7f7;
+
+    font-family: Arial, sans-serif;
+
+    /* THIS FIXES EVERYTHING */
+    /*white-space: pre-wrap;*/
+}
+
+code-copy {
+  display: block;
+  max-width: 900px;
+  margin: 20px auto;
+  font-family: monospace;
+}
+
+/* dynamic label */
+code-copy .header {
+  background: #111;
+  color: #fff;
+  padding: 6px 10px;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* code area */
+code-copy pre {
+  margin: 0;
+  padding: 15px;
+  background: #1e1e1e;
+  color: #d4d4d4;
+
+  max-height: 400px;
+  overflow: auto;
+
+  white-space: pre;
+  tab-size: 4;
+}
+</style>
+
+<body>
+    <section>
+        <note-copy>
+            <h2>📘 INTRODUCTION</h2>
+        </note-copy>
+        <note-copy>
+            <p>
+                In today’s digital world, users are exposed to a large amount of entertainment content such as movies
+                and web
+                series. Choosing what to watch can become confusing without a proper system to guide selection.
+
+            </p>
+            <p>
+                This project, titled Movie Recommendation System, is designed to simulate how recommendation platforms
+                suggest
+                movies to users based on their preferences and ratings. The system is built using Python and SQLite and
+                works
+                entirely on a terminal-based interface.
+            </p>
+            <p>
+                It allows users to register, log in, view trending movies, receive personalized recommendations, explore
+                random
+                movies, and rate movies. The recommendation logic is based on user rating patterns and movie genres.
+
+            </p>
+            <p>
+                The project demonstrates how simple database operations and basic logic can be used to create a
+                functional
+                recommendation system without using advanced machine learning techniques.
+
+            </p>
+        </note-copy>
+    </section>
+
+    <section>
+        <note-copy>
+            <h2>🎯 OBJECTIVES</h2>
+        </note-copy>
+        <note-copy>
+            <h3>The main objectives of this project are:</h3>
+            <ul>
+                <li>To design a terminal-based movie recommendation system.
+                </li>
+                <li>To allow users to register and securely log in.
+                </li>
+                <li>To store and manage movie and user data using SQLite database.
+                </li>
+                <li>To generate trending movies based on average ratings.
+                </li>
+                <li>To provide personalized recommendations based on user preferences.
+                </li>
+                <li>To allow users to rate movies and update their ratings.
+                </li>
+                <li>To implement an explore feature for discovering random movies.
+                </li>
+                <li>To understand how real-world recommendation systems work using simple logic.
+                </li>
+            </ul>
+        </note-copy>
+    </section>
+
+    <section>
+
+        <note-copy>
+            <h2>💻 HARDWARE REQUIREMENTS</h2>
+        </note-copy>
+
+        <note-copy>
+            <h3>The following hardware is required to run the project smoothly:</h3>
+
+            <ul>
+                <li><strong>Processor:</strong> Intel Core i3 or above (or equivalent)</li>
+                <li><strong>RAM:</strong> Minimum 4 GB</li>
+                <li><strong>Storage:</strong> At least 100 MB free space</li>
+                <li><strong>Input Device:</strong> Keyboard</li>
+                <li><strong>Output Device:</strong> Monitor / Display Screen</li>
+                <li><strong>System Type:</strong> Any system supporting Python (Windows / Linux / macOS)</li>
+            </ul>
+        </note-copy>
+
+    </section>
+
+    <section>
+
+        <note-copy>
+            <h2>🖥 SOFTWARE REQUIREMENTS</h2>
+        </note-copy>
+
+        <note-copy>
+            <h3>The following software is required:</h3>
+
+            <ul>
+                <li><strong>Operating System:</strong> Windows 7 or above / Linux / macOS</li>
+                <li><strong>Python Version:</strong> Python 3.7 or above</li>
+                <li><strong>Database:</strong> SQLite3 (built-in with Python)</li>
+                <li><strong>Editor (optional):</strong> VS Code / IDLE / PyCharm</li>
+                <li><strong>Terminal / Command Prompt</strong></li>
+            </ul>
+        </note-copy>
+
+    </section>
+
+    <section>
+
+        <note-copy>
+            <h2>⚙️ ENVIRONMENT SETUP</h2>
+        </note-copy>
+
+        <note-copy>
+            <h3>To run this project, follow the steps below:</h3>
+
+            <ol>
+                <li>
+                    <h3>Install Python</h3>
+                    Download and install Python from:<br>
+                    <a href="https://www.python.org" target="_blank">https://www.python.org</a>
+                    <br><br>
+                    During installation, make sure to check:<br>
+                    ✔ “Add Python to PATH”
+                </li>
+                
+                <li>
+                    <h3>Verify Python Installation:</h3>
+                    
+                    Open terminal / command prompt and run:
+                    <br>
+                    python --version
+                    <br>
+                    or
+                    <br>
+                    python3 --version
+                </li>
+                <li>   
+                    <h3>Install Required Libraries</h3>
+                        <p>This project mainly uses built-in Python libraries.</p>                  
+                        <p>SQLite is already included in Python standard library, so installation is usually not required.
+                        However, if you still want to install it explicitly, you can use:</p>
+
+                    <p>pip install sqlite3</p>
+
+                    </p> 👉 Note: In most systems, this is NOT required because <code>sqlite3</code> comes pre-installed with Python.</p>
+                </li>
+                <li>
+                    <h3>Project Setup Steps</h3>
+                    <ul>
+                        <li>Create a project folder</li>
+                        <li>Add these files inside:</li>
+                        <ul>
+                            <li>main.py</li>
+                            <li>initialize.py</li>
+                            <li>movies.json</li>
+                        </ul>
+                        <li>Run database setup:</li>
+                        <li><p>python initialize.py</p></li>
+                        <li>Start the application:</li>
+                        <li><p>python main.py</p></li>
+                    </ul>
+                   
+                </li>
+            </ol>
+        </note-copy>
+
+    </section>
+
+    <section>
+
+<note-copy>
+    <h2>🧠 SYSTEM DESIGN</h2>
+</note-copy>
+
+<note-copy>
+    The Movie Recommendation System is designed as a terminal-based application using Python and SQLite. The system follows a simple layered structure.
+</note-copy>
+
+<note-copy>
+    <h3>🧩 1. User Interface Layer (UI)</h3>
+
+    <ul>
+        <li>The interface is completely terminal-based.</li>
+        <li>It displays menus such as Login, Register, Home Screen, Movie Page, and Ratings.</li>
+        <li>It takes user input using simple text commands.</li>
+        <li>No graphical interface is used, making it lightweight and easy to run on any system.</li>
+    </ul>
+</note-copy>
+
+<note-copy>
+    <h3>⚙️ 2. Application Logic Layer</h3>
+    This is the core of the system written in Python.
+
+    <p><strong>It handles:</strong></p>
+
+    <ul>
+        <li>User authentication (login/register)</li>
+        <li>Menu navigation system</li>
+        <li>Movie selection and rating logic</li>
+        <li>Recommendation generation</li>
+        <li>Explore section filtering</li>
+    </ul>
+
+    <p>The logic ensures smooth interaction between user input and database operations.</p>
+</note-copy>
+
+<note-copy>
+    <h3>🗄️ 3. Database Layer (SQLite)</h3>
+
+    The system uses SQLite as a local database to store all information.
+
+    <p><strong>Tables used:</strong></p>
+
+    <ul>
+        <li>Users Table → stores login credentials</li>
+        <li>Movies Table → stores movie details (name, genre, description)</li>
+        <li>Ratings Table → stores user ratings for movies</li>
+    </ul>
+
+    <p>All data operations such as insert, update, and fetch are handled using SQL queries.</p>
+</note-copy>
+
+<note-copy>
+    <h3>🔄 SYSTEM FLOW (WORKING PROCESS)</h3>
+</note-copy>
+
+<code-copy label="SYSTEM FLOW">User starts the application
+System checks database integrity
+User logs in or registers
+Home screen is displayed:
+    - Trending movies
+    - Recommended movies
+    - Explore movies
+User selects a movie or views ratings
+User can rate movies
+Ratings are stored in database
+Recommendations update dynamically based on ratings</code-copy>
+
+<note-copy>
+    <h3>📊 SYSTEM ARCHITECTURE (TEXT REPRESENTATION)</h3>
+</note-copy>
+
+<code-copy label="SYSTEM ARCHITECTURE">User
+↓
+Terminal Interface (Python UI)
+↓
+Application Logic (Python Code)
+↓
+SQLite Database (Movies, Users, Ratings)</code-copy>
+
+<note-copy>
+    <h3>⭐ KEY FEATURES</h3>
+</note-copy>
+
+<note-copy>
+    <h4>🎬 1. User Authentication System</h4>
+    Users can register with username and password. Login system validates user credentials. Each user has a unique profile.
+</note-copy>
+
+<note-copy>
+    <h4>🔥 2. Trending Movies Section</h4>
+    Displays top 3 movies based on average ratings. Helps users discover popular content. Data is dynamically calculated from user ratings.
+</note-copy>
+
+<note-copy>
+    <h4>🎯 3. Personalized Recommendation System</h4>
+    Suggests movies based on user's most liked genre. Excludes movies already rated by the user. Sorts recommendations based on average rating.
+</note-copy>
+
+<note-copy>
+    <h4>🎲 4. Explore Movies Feature</h4>
+    Shows 5 random movies not already displayed in trending or recommended sections. Changes on every refresh.
+</note-copy>
+
+<note-copy>
+    <h4>⭐ 5. Movie Rating System</h4>
+    Users can rate movies from 1 to 5. Ratings can be updated anytime. Stored permanently in database.
+</note-copy>
+
+<note-copy>
+    <h4>📋 6. My Ratings Section</h4>
+    Displays all movies rated by the user. Shows individual ratings and average rating.
+</note-copy>
+
+<note-copy>
+    <h4>⚡ 7. Lightweight Terminal Interface</h4>
+    Runs directly in command line. No external UI libraries required.
+</note-copy>
+
+<note-copy>
+    <h4>🧠 8. Simple Recommendation Logic</h4>
+    Uses SQL aggregation (AVG rating) and genre-based filtering. No machine learning required.
+</note-copy>
+
+<note-copy>
+    <h4>🔒 9. Local Database Security</h4>
+    All data stored locally using SQLite. No internet required.
+</note-copy>
+
+    </section>
+
+    <section>
+
+<note-copy>
+
+<h2>🚀 FUTURE SCOPE</h2>
+
+<p>
+The current Movie Recommendation System is a simple terminal-based project using Python and SQLite. It already demonstrates basic features like user login, movie rating, and recommendation based on genre and average ratings. However, it has strong potential for further improvement.
+</p>
+
+<p>
+In the future, the system can be upgraded using machine learning techniques such as collaborative filtering and content-based filtering. This will help in providing more accurate and personalized movie suggestions based on user behavior.
+</p>
+
+<p>
+The project can also be converted into a graphical user interface (GUI) using Tkinter or PyQt. This will make the system more interactive and easier to use compared to the terminal version.
+</p>
+
+<p>
+Another major improvement is converting it into a web application using Flask or Django, so that users can access it through browsers on different devices.
+</p>
+
+<p>
+Security can also be enhanced by adding password encryption (hashing) instead of storing plain text passwords, along with safer authentication methods.
+</p>
+
+<p>
+More movie details such as cast, release year, posters, trailers, and external ratings can be added to make the system more realistic and informative. A dashboard for analytics like popular movies and trending genres can also be included.
+</p>
+
+<p>
+Finally, the system can be extended into a mobile application using Flutter or React Native, and can also use cloud databases for large-scale multi-user access.
+</p>
+
+<p>
+In conclusion, this project is a strong base model that can be expanded into a full-scale intelligent recommendation system similar to modern OTT platforms.
+</p>
+
+</note-copy>
+
+</section>
+
+
+
+<section>
+    <note-copy>
+        <h2>SOURCE CODE</h2>
+    </note-copy>
+    <note-copy>
+        <p>
+        <strong>📄 main.py</strong><br>
+        This file contains the main application logic of the Movie Recommendation System, including user authentication, movie browsing, rating system, and recommendation features. It connects the user interface with the SQLite database and handles all runtime interactions.
+        </p>
+    </note-copy>
+    <code-copy label="main.py">import sqlite3
+import sys
+import random
+
+DATABASE_NAME = "movies.db"
+current_user_id = None
+
+
+# ---------------- DB ----------------
+
+def get_connection():
+    return sqlite3.connect(DATABASE_NAME)
+
+
+def check_database():
+    try:
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute("SELECT 1 FROM users")
+        cursor.execute("SELECT 1 FROM movies")
+        cursor.execute("SELECT 1 FROM ratings")
+        connection.close()
+        return True
+    except:
+        return False
+
+
+if not check_database():
+    print("Database is broken. Run initialize.py")
+    sys.exit()
+
+
+# ---------------- UI ----------------
+
+def line():
+    print("-" * 60)
+
+
+def header(text):
+    width = 60
+    print("\n" + "=" * width)
+    print(text.center(width))
+    print("=" * width)
+
+# ---------------- MENU ENGINE ----------------
+
+def run_menu(title, menu_options):
+
+    while True:
+        header(title)
+
+        keys = list(menu_options.keys())
+        i = 1
+
+        for key in keys:
+            print(str(i) + ". " + key)
+            i += 1
+
+        line()
+
+        choice = input("Select option: ")
+
+        if not choice.isdigit():
+            print("Invalid choice")
+            continue
+
+        choice = int(choice)
+
+        if choice < 1 or choice > len(keys):
+            print("Invalid choice")
+            continue
+
+        selected_key = keys[choice - 1]
+        result = menu_options[selected_key]()
+
+        if result == "EXIT":
+            return
+
+
+# ---------------- AUTH ----------------
+
+def register_user():
+    line()
+    username = input("Username: ")
+    password = input("Password: ")
+    line()
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    try:
+        cursor.execute(
+            "INSERT INTO users(username,password) VALUES(?,?)",
+            (username, password)
+        )
+        connection.commit()
+        print("Registration successful")
+    except:
+        print("Username already exists")
+
+    connection.close()
+
+
+def login_user():
+    global current_user_id
+
+    line()
+    username = input("Username: ")
+    password = input("Password: ")
+    line()
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute(
+        "SELECT id FROM users WHERE username=? AND password=?",
+        (username, password)
+    )
+
+    user = cursor.fetchone()
+    connection.close()
+
+    if user:
+        current_user_id = user[0]
+        return "LOGIN_SUCCESS"
+    else:
+        print("Invalid credentials")
+        return None
+
+
+# ---------------- DATA ----------------
+
+def fetch_home_data():
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT m.id, m.name, COALESCE(AVG(r.rating),0)
+        FROM movies m
+        LEFT JOIN ratings r ON m.id=r.movie_id
+        GROUP BY m.id
+        ORDER BY AVG(r.rating) DESC
+        LIMIT 3
+    """)
+    trending = cursor.fetchall()
+
+    cursor.execute("""
+        SELECT m.id, m.name, COALESCE(AVG(r.rating),0)
+        FROM movies m
+        LEFT JOIN ratings r ON m.id=r.movie_id
+        WHERE m.genre=(
+            SELECT m2.genre
+            FROM ratings r2
+            JOIN movies m2 ON r2.movie_id=m2.id
+            WHERE r2.user_id=?
+            GROUP BY m2.genre
+            ORDER BY AVG(r2.rating) DESC
+            LIMIT 1
+        )
+        AND m.id NOT IN (SELECT movie_id FROM ratings WHERE user_id=?)
+        GROUP BY m.id
+        ORDER BY AVG(r.rating) DESC
+        LIMIT 3
+    """, (current_user_id, current_user_id))
+
+    recommended = cursor.fetchall()
+
+    cursor.execute("SELECT id,name FROM movies")
+    all_movies = cursor.fetchall()
+
+    connection.close()
+
+    return trending, recommended, all_movies
+
+
+# ---------------- EXPLORE ----------------
+
+def show_explore(all_movies, trending, recommended):
+
+    excluded = []
+
+    for m in trending:
+        excluded.append(m[0])
+
+    for m in recommended:
+        excluded.append(m[0])
+
+    pool = []
+
+    for m in all_movies:
+        if m[0] not in excluded:
+            pool.append(m)
+
+    if len(pool) == 0:
+        return
+
+    random.shuffle(pool)
+    pool = pool[:5]
+
+    print("\nEXPLORE MOVIES")
+
+    i = 1
+    for m in pool:
+        print(str(i) + ". [" + str(m[0]) + "] " + m[1])
+        i += 1
+
+
+# ---------------- MOVIE PAGE ----------------
+
+def open_movie(movie_id):
+
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT m.id, m.name, m.genre, m.description, COALESCE(AVG(r.rating),0)
+        FROM movies m
+        LEFT JOIN ratings r ON m.id=r.movie_id
+        WHERE m.id=?
+        GROUP BY m.id
+    """, (movie_id,))
+
+    movie = cursor.fetchone()
+
+    if not movie:
+        print("Movie not found")
+        return
+
+    while True:
+        header(movie[1])
+
+        print("Genre:", movie[2])
+        print("Rating:", round(movie[4], 1))
+        line()
+        print(movie[3])
+        line()
+
+        cursor.execute(
+            "SELECT rating FROM ratings WHERE user_id=? AND movie_id=?",
+            (current_user_id, movie_id)
+        )
+
+        user_rating = cursor.fetchone()
+        print("Your Rating:", user_rating[0] if user_rating else "Not Rated")
+
+        line()
+        print("1. Rate Movie")
+        print("2. Back")
+        line()
+
+        choice = input("> ")
+
+        if choice == "1":
+            rating = input("Enter rating (1-5): ")
+
+            if not rating.isdigit():
+                continue
+
+            rating = int(rating)
+
+            if rating < 1 or rating > 5:
+                print("Invalid rating")
+                continue
+
+            conn = get_connection()
+            cur = conn.cursor()
+
+            cur.execute("""
+                INSERT OR REPLACE INTO ratings(user_id,movie_id,rating)
+                VALUES(?,?,?)
+            """, (current_user_id, movie_id, rating))
+
+            conn.commit()
+            conn.close()
+
+        elif choice == "2":
+            return
+
+
+def select_movie():
+    movie_id = input("Enter Movie ID: ")
+    if movie_id.isdigit():
+        open_movie(int(movie_id))
+
+
+def my_ratings():
+    connection = get_connection()
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT m.name, r.rating
+        FROM ratings r
+        JOIN movies m ON m.id=r.movie_id
+        WHERE r.user_id=?
+    """, (current_user_id,))
+
+    ratings = cursor.fetchall()
+    connection.close()
+
+    header("MY RATINGS")
+
+    if not ratings:
+        print("No ratings yet")
+        input()
+        return
+
+    total = 0
+
+    for r in ratings:
+        print(r[0], "★", r[1])
+        total += r[1]
+
+    line()
+    print("Average:", round(total / len(ratings), 2))
+    input()
+
+
+# ---------------- HOME ----------------
+
+def home_screen():
+
+    def home_logic():
+        trending, recommended, all_movies = fetch_home_data()
+
+        header("HOME")
+
+        print("\nTRENDING")
+        letter = "ABC"
+        i = 0
+        for m in trending:
+            print(letter[i] + ". [" + str(m[0]) + "] " + m[1])
+            i += 1
+
+        line()
+
+        print("\nRECOMMENDED")
+        i = 1
+        for m in recommended:
+            print(str(i) + ". [" + str(m[0]) + "] " + m[1])
+            i += 1
+
+        line()
+
+        show_explore(all_movies, trending, recommended)
+        line()
+
+    def select_movie_action():
+        select_movie()
+
+    def my_ratings_action():
+        my_ratings()
+
+    def refresh():
+        return None
+
+    def logout():
+        return "EXIT"
+
+    while True:
+
+        home_logic()
+
+        run_menu("HOME MENU", {
+            "Select Movie": select_movie_action,
+            "My Ratings": my_ratings_action,
+            "Refresh": refresh,
+            "Logout": logout
+        })
+
+        break
+
+
+# ---------------- MAIN MENU ----------------
+
+def start_login():
+    result = login_user()
+    if result == "LOGIN_SUCCESS":
+        home_screen()
+
+
+def start_register():
+    register_user()
+
+def exit_app():
+    sys.exit()
+
+run_menu("MOVIE RECOMMENDATION SYSTEM", {
+    "Login": start_login,
+    "Register": start_register,
+    "Exit": exit_app
+})</code-copy>
+ <note-copy>
+        <p>
+        <strong>⚙️ initialize.py</strong><br>
+        This file is used to create and initialize the SQLite database structure and load movie data from the JSON file. It also rebuilds the database if it is missing or corrupted to ensure proper system setup.
+        </p>
+    </note-copy>
+    <code-copy label="initialize.py">import sqlite3
+import json
+import os
+
+DB = "movies.db"
+
+
+def create_db():
+    con = sqlite3.connect(DB)
+    cur = con.cursor()
+
+    cur.execute("""
+    CREATE TABLE users(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username TEXT UNIQUE,
+        password TEXT
+    )
+    """)
+
+    cur.execute("""
+    CREATE TABLE movies(
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        name TEXT UNIQUE,
+        genre TEXT,
+        description TEXT
+    )
+    """)
+
+    cur.execute("""
+    CREATE TABLE ratings(
+        user_id INTEGER,
+        movie_id INTEGER,
+        rating INTEGER,
+        PRIMARY KEY(user_id, movie_id)
+    )
+    """)
+
+    con.commit()
+    con.close()
+
+
+def refresh_movies():
+    con = sqlite3.connect(DB)
+    cur = con.cursor()
+
+    with open("movies.json", "r", encoding="utf-8") as f:
+        movies = json.load(f)
+
+    for m in movies:
+        cur.execute("""
+        INSERT OR REPLACE INTO movies(name, genre, description)
+        VALUES(?,?,?)
+        """, (m["name"], m["genre"], m["description"]))
+
+    con.commit()
+    con.close()
+
+
+# If db missing -> rebuild
+if not os.path.exists(DB):
+    create_db()
+    print("Database created.")
+else:
+    try:
+        con = sqlite3.connect(DB)
+        cur = con.cursor()
+        cur.execute("SELECT 1 FROM users")
+        cur.execute("SELECT 1 FROM movies")
+        cur.execute("SELECT 1 FROM ratings")
+        con.close()
+    except:
+        os.remove(DB)
+        create_db()
+        print("Broken DB fixed.")
+
+refresh_movies()
+print("Movies loaded.")</code-copy>
+    <note-copy>
+        <p>
+        <strong>🎬 movies.json</strong><br>
+        This file contains the initial dataset of movies including their name, genre, and description in JSON format. It is used to populate the database with sample movie records during initialization.
+        </p>
+    </note-copy>
+    <code-copy label="movies.json">[
+    {
+        "name": "Interstellar",
+        "genre": "Sci-Fi",
+        "description": "A team of astronauts travel through a wormhole to find a new home for humanity."
+    },
+    {
+        "name": "Inception",
+        "genre": "Sci-Fi",
+        "description": "A thief enters dreams to steal secrets and faces a final impossible mission."
+    },
+
+    {
+        "name": "The Dark Knight",
+        "genre": "Action",
+        "description": "Batman faces the Joker, a criminal mastermind who brings chaos to Gotham City."
+    },
+    {
+        "name": "John Wick",
+        "genre": "Action",
+        "description": "A retired assassin seeks revenge after losing everything important to him."
+    },
+
+    {
+        "name": "The Shawshank Redemption",
+        "genre": "Drama",
+        "description": "Two imprisoned men build friendship while surviving in harsh prison conditions."
+    },
+    {
+        "name": "Forrest Gump",
+        "genre": "Drama",
+        "description": "The life journey of a simple man who unknowingly influences major historical events."
+    },
+
+    {
+        "name": "The Conjuring",
+        "genre": "Horror",
+        "description": "Paranormal investigators help a family experiencing terrifying supernatural events."
+    },
+    {
+        "name": "Insidious",
+        "genre": "Horror",
+        "description": "A family tries to save their son trapped in a dark spiritual dimension."
+    },
+
+    {
+        "name": "Toy Story",
+        "genre": "Animation",
+        "description": "Toys come alive and go through adventures when humans are not around."
+    },
+    {
+        "name": "Frozen",
+        "genre": "Animation",
+        "description": "Two sisters struggle with magical ice powers that threaten their kingdom."
+    },
+
+    {
+        "name": "The Hangover",
+        "genre": "Comedy",
+        "description": "A bachelor party in Las Vegas goes wildly wrong after a night of chaos."
+    },
+    {
+        "name": "3 Idiots",
+        "genre": "Comedy",
+        "description": "Three engineering students challenge traditional education systems with humor and friendship."
+    },
+
+    {
+        "name": "Shutter Island",
+        "genre": "Thriller",
+        "description": "A U.S. marshal investigates a mysterious disappearance in a psychiatric facility."
+    },
+    {
+        "name": "Gone Girl",
+        "genre": "Thriller",
+        "description": "A man becomes the prime suspect after his wife mysteriously disappears."
+    },
+
+    {
+        "name": "Titanic",
+        "genre": "Romance",
+        "description": "A love story unfolds aboard the ill-fated Titanic ship."
+    },
+    {
+        "name": "The Notebook",
+        "genre": "Romance",
+        "description": "A timeless love story between two people from different social backgrounds."
+    },
+
+    {
+        "name": "The Da Vinci Code",
+        "genre": "Mystery",
+        "description": "A symbologist uncovers a secret hidden in famous artworks and religious history."
+    },
+    {
+        "name": "Sherlock Holmes",
+        "genre": "Mystery",
+        "description": "A brilliant detective solves complex crimes using logic and observation."
+    },
+
+    {
+        "name": "The Lord of the Rings",
+        "genre": "Adventure",
+        "description": "A hobbit embarks on a journey to destroy a powerful ring."
+    },
+    {
+        "name": "Pirates of the Caribbean",
+        "genre": "Adventure",
+        "description": "A pirate captain searches for treasure while facing curses and enemies."
+    }
+]
+
+
+</code-copy>
+</section>
+
+<section>
+    <note-copy>
+        <h3>📸 Program Execution Screenshots</h3>
+    </note-copy>
+    <div class="img-box">
+        <img src="images/init.png" alt="">
+    </div>
+    <note-copy>
+        Database successfully created and initialized with movie dataset.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/main-menu.png" alt="">
+    </div>
+    <note-copy>
+        Main menu of the Movie Recommendation System.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/register.png" alt="">
+    </div>
+    <note-copy>
+        User registration process in the system.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/login.png" alt="">
+    </div>
+    <note-copy>
+        User login authentication screen.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/home.png" alt="">
+    </div>
+    <note-copy>
+        Home screen displaying trending, recommended, and explore movie sections.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/movie.png" alt="">
+    </div>
+    <note-copy>
+        Detailed view of selected movie with rating information.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/rating.png" alt="">
+    </div>
+    <note-copy>
+        User rating a movie using the rating system.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/myratings.png" alt="">
+    </div>
+    <note-copy>
+        List of movies rated by the user with average rating.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/broken/dev.png" alt="">
+    </div>
+    <note-copy>
+        Handling incorrect login credentials without system crash.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/broken/invalid.png" alt="">
+    </div>
+    <note-copy>
+        Handling invalid menu input using validation checks.
+    </note-copy>
+    <div class="img-box">
+        <img src="images/broken/db.png" alt="">
+    </div>
+    <note-copy>
+        Handling database corruption or missing database file with safe program termination.
+    </note-copy>    
+</section>
+<section>
+
+<note-copy>
+
+<h2>📚 BIBLIOGRAPHY</h2>
+
+</note-copy>
+
+<note-copy>
+
+<p>The following sources and references were used during the development of this project:</p>
+
+<ul>
+    <li>Python Official Documentation: <a href="https://docs.python.org/3/" target="_blank">https://docs.python.org/3/</a></li>
+    <li>SQLite Official Documentation: <a href="https://www.sqlite.org/docs.html" target="_blank">https://www.sqlite.org/docs.html</a></li>
+    <li>W3Schools Python Tutorial: <a href="https://www.w3schools.com/python/" target="_blank">https://www.w3schools.com/python/</a></li>
+    <li>GeeksforGeeks Python and SQLite Articles: <a href="https://www.geeksforgeeks.org/" target="_blank">https://www.geeksforgeeks.org/</a></li>
+    <li>Class XII Computer Science Textbook (CBSE)</li>
+    <li>Online tutorials and reference materials for Python database connectivity and terminal-based application design</li>
+</ul>
+
+</note-copy>
+
+</section>
+<section>
+
+<note-copy>
+
+<h2>🎬 MOVIES USED IN DATASET</h2>
+
+</note-copy>
+
+<note-copy>
+
+<p>The following movies were included in the project database:</p>
+
+<ul>
+    <li>Interstellar</li>
+    <li>Inception</li>
+    <li>The Dark Knight</li>
+    <li>John Wick</li>
+    <li>The Shawshank Redemption</li>
+    <li>Forrest Gump</li>
+    <li>The Conjuring</li>
+    <li>Insidious</li>
+    <li>Toy Story</li>
+    <li>Frozen</li>
+    <li>The Hangover</li>
+    <li>3 Idiots</li>
+    <li>Shutter Island</li>
+    <li>Gone Girl</li>
+    <li>Titanic</li>
+    <li>The Notebook</li>
+    <li>The Da Vinci Code</li>
+    <li>Sherlock Holmes</li>
+    <li>The Lord of the Rings</li>
+    <li>Pirates of the Caribbean</li>
+</ul>
+
+</note-copy>
+
+</section>
+</body>
+<script>
+    class NoteCopy extends HTMLElement {
+    connectedCallback() {
+        const content = this.innerHTML;
+        this.innerHTML = `
+      <div class="note-content">
+        ${content}
+      </div>
+    `;
+
+        this.addEventListener("dblclick", () => {
+            navigator.clipboard.writeText(this.innerText);
+            this.style.transition = "0.2s";
+            this.style.background = "#e6ffe6";
+            this.style.display="block";
+            setTimeout(() => {
+                this.style.background = "#f7f7f7";
+            }, 300);
+            // alert("copied content")
+        });
+    }
+}
+
+customElements.define("note-copy", NoteCopy);
+
+
+
+class CodeCopy extends HTMLElement {
+  connectedCallback() {
+
+    const label = this.getAttribute("label") || "SOURCE CODE";
+    const raw = this.textContent;
+
+    this.innerHTML = `
+      <div class="header">${label}</div>
+      <pre>${raw}</pre>
+    `;
+
+    this.addEventListener("dblclick", () => {
+      navigator.clipboard.writeText(raw);
+      alert(`code copied. text length:${raw.length}`)
+    });
+  }
+}
+
+customElements.define("code-copy", CodeCopy);
+
+
+</script>
+</html>
